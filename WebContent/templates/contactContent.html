@@ -1,0 +1,114 @@
+<div class="contact-content">
+    <div class="menu contact-menu" >
+        <div class="drag" style="-webkit-app-region: drag"></div>
+        <span class="memu-close"></span>
+        <span class="memu-max"></span>
+        <span class="memu-min"></span>
+    </div>
+    <div class="contact-card">
+        <div class="avatar-box">
+            <img ng-src="{{contactDetails.avatarPath}}"  src="" alt="" onerror="this.src='images/group91.png'" class="card-avatar" draggable="false">
+            <img ng-if="contactDetails.accountType==2" src="images/ab-big.png" alt=""  class="ab-logo" draggable="false">
+        </div>
+        <h2 class="card-group-name">{{contactDetails.name}}</h2>
+        <div ng-click="transferClick(contactDetails)" class="card-btn-send">
+            发消息
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="box">
+    <div class="box_hd with_border">
+        <div class="title_wrap">
+            <div class="title">{{'DETAILS'|translate}}</div>
+        </div>
+    </div>
+    <div class="box_bd">
+        <div ng-if="!currentContact" class="empty">
+            <i class="web_wechat_no_contect"></i>
+        </div>
+
+        <div ng-if="currentContact" data-user="currentContact">
+            <div class="profile">
+                <div class="avatar">
+                    <img ng-if="contactDetails.roomContact" class="img_group" ng-src="{{contactDetails.avatarPath}}" alt="" onerror="this.src='imgs/grouphead100.jpg'" draggable="false"/>
+                    <img ng-if="!contactDetails.roomContact" class="img" ng-src="{{contactDetails.avatarPath}}" alt="" onerror="this.src='imgs/nohead100.gif'" draggable="false"/>
+                    <input type="hidden" value="{{smallAvatar}}"/>
+
+                </div>
+
+                <div class="nickname_area">
+                    <h4 class="nickname">{{contactDetails.name}}</h4>
+                    <input type="hidden" value="{{contactId}}"/>
+                    <i ng-class="{'web_wechat_women': contactDetails.gender == 2, 'web_wechat_men': contactDetails.gender == 1}"></i>
+                </div>
+                <div class="meta_area">
+                    <div class="meta_item">
+                        <label ng-if="!contactDetails.roomContact" class="label">{{'REMARKS'|translate}}</label>
+                        <label ng-if="contactDetails.roomContact" class="label">{{'GROUPNAME'|translate}}</label>
+                        <p class="value">{{contactDetails.name}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'REGION'|translate}}</label>
+                        <p class="value">{{contactDetails.areaId|address}}</p>
+                    </div>
+                </div>
+                <input type="hidden" value="{{contactType}}"/>
+                <div class="meta_area">
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'COMMUNITY'|translate}}</label>
+                        <p class="value">{{contactDetails.accountName}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'NAME'|translate}}</label>
+                        <p class="value">{{contactDetails.employeeNme}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'JOBNUMBER'|translate}}</label>
+                        <p class="value">{{contactDetails.cemployeeCde}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'PERPHONE'|translate}}</label>
+                        <p class="value">{{contactDetails.employeePhone}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'PUBPHONE'|translate}}</label>
+                        <p class="value">{{contactDetails.publicPhone}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'OFFICEPHONE'|translate}}</label>
+                        <p class="value">{{contactDetails.officalPhone}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'MAIL'|translate}}</label>
+                        <p class="value">{{contactDetails.email}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'SUBJECT'|translate}}</label>
+                        <p class="value">{{contactDetails.bookNme}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'INSTITUTION'|translate}}</label>
+                        <p class="value">{{contactDetails.branchNme}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'DEPARTMENT'|translate}}</label>
+                        <p class="value">{{contactDetails.agencyNme}}</p>
+                    </div>
+                    <div class="meta_item" ng-if="!contactDetails.roomContact">
+                        <label class="label">{{'BUSDEPARTMENT'|translate}}</label>
+                        <p class="value">{{contactDetails.departmentNme}}</p>
+                    </div>
+                </div>
+
+                <div class="action_area" ng-if="contactDetails.roomContact">
+                    <a class="button" ng-click="transferClick(contactDetails)" draggable="false">{{'CONTACTSEND'|translate}}</a>
+                </div>
+                <div class="action_area" ng-if="!contactDetails.roomContact">
+                    <a class="button" ng-click="transferClick(contactDetails)" draggable="false">{{'CONTACTSEND'|translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

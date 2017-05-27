@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html ng-app="indexApp" class="ng-scope" lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>邦邦社区</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- <link rel="stylesheet" href="css/bbsqweb.css"> -->
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/message.css">
+    <link rel="stylesheet" href="css/contextMenu.css">
+    <link rel="stylesheet" href="framework/ngDialog/ngDialog.css">
+    <link rel="stylesheet" href="framework/ngDialog/ngDialog-theme-default.css">
+    <link rel="stylesheet" href="css/imgPreview.css">
+    <link rel="stylesheet" href="css/system.css">
+
+
+    <script type="text/javascript" src="js/thirdparty/jquery-1.8.1.js"></script>
+    <script type="text/javascript" src="js/expand/qqface.js?v=2"></script>
+    <script type="text/javascript" src="js/tools/icomet.js"></script>
+    <script type="text/javascript" src="js/tools/pubsub.js"></script>
+    <script type="text/javascript" src="js/thirdparty/json2.js"></script>
+    <script type="text/javascript" src="js/thirdparty/strophe.js"></script>
+    <script type="text/javascript" src="js/thirdparty/pinyin.js"></script>
+    <script type="text/javascript" src="js/thirdparty/CryptoJS.js"></script>
+    <script type="text/javascript" src="js/services/msgdefineglobal.js"></script>
+    <script type="text/javascript" src="js/expand/mode-ecb.js"></script>
+    <script type="text/javascript" src="js/data/BBArea.js"></script>
+    <script type="text/javascript" src="js/data/BBExpression.js?v=2"></script>
+    <script type="text/javascript" src="js/data/BBKeycode.js?v=1"></script>
+    <script type="text/javascript" src="js/tools/amr.js"></script>
+    <script type="text/javascript" src="js/thirdparty/amrnb.js"></script>
+    <script type="text/javascript" src="framework/angular.js"></script>
+    <script type="text/javascript" src="framework/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="framework/angular-route.min.js"></script>
+    <script type="text/javascript" src="framework/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="framework/angular-messages.min.js"></script>
+    <script type="text/javascript" src="framework/angular-translate.min.js"></script>
+    <script type="text/javascript" src="framework/ngDialog/ngDialog.js"></script>
+    <script type="text/javascript" src="js/directives/extendDirective.js"></script>
+
+    <!--引入配置文件-->
+    <script type="text/javascript" src="config.js"></script>
+    <script type="text/javascript" src="js/expand/interface.js"></script>
+    <script type="text/javascript" src="js/tools/bbDatabase.js"></script>
+	<script type="text/javascript" src="js/tools/bbDatabase2.js"></script>
+    <script type="text/javascript" src="js/tools/pathService.js"></script>
+    <script type="text/javascript" src="js/tools/Math.uuid.js"></script>
+    <script type="text/javascript" src="js/services/toolsService.js"></script>
+    <!--检测网络环境变化-->
+    <script type="text/javascript" src="js/thirdparty/onLine.js"></script>
+    <script type="text/javascript" src="js/protocol/checkNet.js"></script>
+    <!--二维码插件-->
+	<script type="text/javascript" src="js/tools/qrcode.js"></script>
+    <script type="text/javascript" src="js/tools/qrcode_UTF8.js"></script>
+    <script type="text/javascript" src="js/tools/angular-qrcode.js"></script>
+    <!--程序入口控制器-->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!--控制器-->
+    <script type="text/javascript" src="js/controllers/routerConfig.js"></script>
+    <script type="text/javascript" src="js/controllers/mainController.js"></script>
+    <script type="text/javascript" src="js/controllers/loginController.js"></script>
+    <script type="text/javascript" src="js/controllers/chatListController.js"></script>
+    <script type="text/javascript" src="js/controllers/chatController.js"></script>
+    <script type="text/javascript" src="js/controllers/chatLogController.js"></script>
+    <script type="text/javascript" src="js/controllers/inputController.js"></script>
+    <script type="text/javascript" src="js/controllers/infoTransforController.js"></script>
+    <script type="text/javascript" src="js/controllers/contactListController.js"></script>
+    <script type="text/javascript" src="js/controllers/friendListController.js"></script>
+    <script type="text/javascript" src="js/controllers/groupsController.js"></script>
+    <script type="text/javascript" src="js/controllers/contactContentController.js"></script>
+    <script type="text/javascript" src="js/controllers/searchController.js"></script>
+    <script type="text/javascript" src="js/controllers/imagePreviewerController.js"></script>
+    <script type="text/javascript" src="js/directives/netIndicatorComponent.js"></script>
+    <!--引入工具类-->
+    <script type="text/javascript" src="js/tools/util.js"></script>
+    <script type="text/javascript" src="js/tools/map.js"></script>
+    <!--引入拆分服务-->
+    <script type="text/javascript" src="js/protocol/bbxmpp.js"></script>
+    <script type="text/javascript" src="js/protocol/bbAjax.js"></script>
+    <script type="text/javascript" src="js/services/commonService.js"></script>
+    <script type="text/javascript" src="js/services/pathService.js"></script>
+    <script type="text/javascript" src="js/services/avatarService.js"></script>
+    <script type="text/javascript" src="js/services/contactManageService.js"></script>
+    <script type="text/javascript" src="js/services/messageManageService.js"></script>
+    <script type="text/javascript" src="js/services/chatLogService.js"></script>
+    <script type="text/javascript" src="js/services/chatListService.js"></script>
+    <script type="text/javascript" src="js/services/groupManageService.js"></script>
+    <script type="text/javascript" src="js/services/login_service.js"></script>
+	<script type="text/javascript" src="js/services/addressbookService.js"></script>
+	<script type="text/javascript" src="js/services/bbGlobalService.js"></script>
+    <script type="text/javascript" src="js/services/msgdefineglobal.js"></script>
+    <script type="text/javascript" src="js/qrLoginMgr.js"></script>
+    <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak{display:none;}ng\:form{display:block;}</style>
+</head>
+
+<body ng-controller="mainController" ng-class="{'login-bg':!switch.isLogin}" onbeforeunload="RunOnBeforeUnload()" onunload="runOnUnLoad()">
+    <div ui-view class="contain-box" ng-class="{'loginv':flag}"></div>
+</body>
+<script>
+    var inputsMap = new Map();    // 小昭inputController和messageManageService 用到
+    var desKey = "S0e8zUiN";   //郑伟 解密
+</script>
+</html>

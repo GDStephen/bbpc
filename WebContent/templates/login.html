@@ -1,0 +1,78 @@
+<!-- 登录界面 -->
+<div id="login" ng-if="!switch.isLogin">
+    <div class="header">
+    <span id="title" style="-webkit-app-region: drag">邦邦社区</span>
+    <img src="images/close.png" alt="" id="login-close" ng-click="closeWindow()">
+    </div>
+    <div class="login-box">
+        <div class="login-choose">
+            <div class="login-item login-active" style="width:100%;height: 60px;line-height: 60px;"><span class="scan" style="font-size:16px;">扫描登录</span></div>
+            <!--<div class="login-item login-active"><span class="scan">扫描登录</span></div>""
+            <div class="login-item"><span class="password">密码登录</span></div>-->
+        </div>
+        <!-- 扫描界面 -->
+        <div class="scan-box no-net"  hidden>
+            <img src="images/no-net.png" alt="">
+            <h2 class="net-cut">网络连接已断开</h2>
+            <span class="set-net">请检查你的网络设置</span>
+            <span class="language" hidden>中文版</span>
+        </div>
+        <div class="scan-box" ng-hide="isScan">
+            <div class="ercode">
+                <qrcode data='{{qrId}}' size="154" color="#000" background="#fff" draggable="false" class="img" ></qrcode>
+                <div class="mask" hidden>
+                        <span>二维码已经失效</span><br><span>请点击刷新按钮</span>
+                </div>
+            </div>
+            <div class="prompt"><span>请使用邦邦社区扫描二维码登录</span><a href="#" class="refresh" draggable="false">{{'REFRESH' | translate }}</a></div>
+            <a href="#" class="language" draggable="false" ng-click="changeLanguage('en')" ng-show="langFlag" hidden>中文版</a>
+            <a href="#" class="language" draggable="false" ng-click="changeLanguage('zh')" ng-hide="langFlag">English</a>
+        </div>
+        <!-- 扫描界面 End-->
+        <!-- 扫描成功 -->
+        <div class="scan-success" ng-show="isScan">
+            <img src="{{userAvatarPath}}" alt="" class="user-avatar" draggable="false" onerror="this.src='images/user-self.png'">
+            <span class="success-text">扫描成功</span>
+            <span class="success-tip">请在邦邦社区中点击登录</span>
+        </div>
+        <!-- 扫描成功 End-->
+        <!-- 账号密码登录 -->
+        <div class="account-login" hidden>
+            <img src="images/logo.png" alt="">
+            <form action="">
+                <input type="text" id="user-id" placeholder="ID工号">
+                <input type="password" id="user-password" placeholder="密码">
+            </form>
+        </div>
+    </div>
+    <div class="footer"><img src="images/download.png" alt=""  draggable="false"><span>邦邦社区APP下载</span></div>
+</div>
+<!-- 登录界面 End-->
+
+
+
+<!-- 下面是就代码 -->
+<!-- <div class="login ng-scope" ng-if="!switch.isLogin" id="loginDiv" style="display: block;">
+    <div class="login_box">
+        <div class="title" style="width:100%;height:36px;">
+            <span style="line-height:36px;font-size:14px;color:#4A4A4A;padding-left:20px;display:inline-block;width:224px;-webkit-app-region: drag;-webkit-user-select: none;">邦邦社区</span>
+                <span class="psr-close" ng-click="closeWindow()">
+                   <span class="psr-cl">+</span> 
+                </span>
+        </div>
+        <div class="qrcode" id="qrdiv" ng-hide="isScan" >
+            <qrcode data='{{qrId}}' size="187" color="#000" background="#fff" id="qrcode"  draggable="false"  class="img" id="qrcode"></qrcode>
+            <p class="sub_title ng-binding">扫描二维码登录邦邦社区</p>
+        </div>
+        <div class="avatar" ng-show="isScan" id="qrokdiv">
+            <img class="img" src="{{userAvatarPath}}" id="userAvatar" draggable="false"/> 
+            <span class="sub_title" id="userRealname" style="margin-bottom:8px;">{{userName}}</span>
+            <span class="sub_title ng-binding" id="loginStatus"
+                  style="font-size:16px;margin-bottom:40px;">{{loginState}}</span>
+
+            <p class="tips ng-binding" style="color:#717171;">请在手机上确认登录</p>
+            <a href="" ng-click="goScan()" ng-click="isScan = false;"
+               class="action ng-binding" draggable="false">返回二维码登录</a>
+        </div>
+    </div>
+</div>

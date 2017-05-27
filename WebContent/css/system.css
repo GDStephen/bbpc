@@ -1,0 +1,13 @@
+.connection-indicator {
+  color: #ffffff;
+  font-size: 12px;
+  height: 28px;
+  line-height: 28px;
+  background-color: rgba(0, 132, 255, 0.8);
+  z-index: 999999;
+  top: 90px;
+  text-align: center;
+  width: 100%;
+  position: absolute; }
+
+/*# sourceMappingURL=system.css.map */

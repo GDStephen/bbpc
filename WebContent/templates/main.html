@@ -1,0 +1,107 @@
+<!-- 主界面 -->
+<div class="chat-main" ng-if="switch.isLogin" >
+    <!--左侧菜单-->
+    <div class="list-item">
+        <div class="user-avatar-small avatar-box" id = "myProfile">
+            <img src="images/avatar.jpg" alt="" draggable="false" class="avatar" ng-click="showProfile('myselfLogin','myProfile',$event)">
+            <img src="images/ab.png" alt="" draggable="false" class="ab-logo">
+        </div>
+        <div class="chat-logo" ui-sref="bangbang.chat" ng-class="{active:$state.includes('bangbang.chat')}">
+        <span></span>
+        </div>
+        <div class="contact-logo" ui-sref="bangbang.contact" ng-class="{active:$state.includes('bangbang.contact')}">
+        <span></span>
+        </div>
+        <div class="collection-logo" hidden>
+        <span></span>
+        </div>
+        <div class="set-logo">
+        <span></span>
+        </div>
+        </div>
+        <!-- 路由模板 chat-list -->
+        <div class="chat-router">
+        <div class="search-box"  ng-controller="searchController">
+        <div class="searchbox" >
+        <input type="text" ng-model="searchMessage" id="search" placeholder="搜索" ng-keyup="searchKeydown($event)" >
+        <span class="search-icon"></span>
+        <spanb hidden>英文版</span>
+        </div>
+        <div ui-view="navView"></div>
+        <!--搜索结果界面-->
+
+            <!--<div class="search-list" ng-show="isSearch">
+                <div class="search-class">
+                    <span class="class-all active">全部</span>
+                    <span class="class-contact">联系人</span>
+                    <span class="class-group">群组</span>
+                </div>
+                <div class="search-contact-box">
+                    <span class="search-contact">联系人</span>
+                </div>
+                <ul class="ab-contact-list search-contact-list">
+                    <li class="ab-contact"  ng-repeat="item in searchContacts" ng-click="transferClick(item)" >
+                    <div class="avatar-box ab-user">
+                    <img src="" alt="" ng-show="item.type == 'chat'"  draggable="false" ng-src="{{item.avatarPath}}"  class="avatar" onerror="this.src='images/avatar40.png'">
+                    <img src="" alt="" ng-show="item.type == 'groupchat'"  draggable="false" ng-src="{{item.avatarPath}}"  class="avatar" onerror="this.src='images/gropup40.png'">
+                    <img src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                    </div>
+                    <span class="ab-contact-name">{{item.name}}</span>
+                    </li>
+                </ul>
+                <div class="search-group-box">
+                <span class="search-group">群组</span>
+                </div>
+                <ul class="ab-contact-list  search-group-list">
+                <li class="ab-contact">
+                <div class="avatar-box ab-user">
+                <img src="" alt="" draggable="false" class="avatar" onerror="this.src='images/group40.png'">
+                <img src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                </div>
+                <span class="ab-contact-name">tang</span>
+                </li>
+                </ul>
+            </div>-->
+            <!--搜索面板-->
+            <div class="search-list" ng-show="isSearch">
+            <div class="search-class">
+                <span class="class-all active">全部</span><span class="class-contact">联系人</span><span class="class-group">群组</span>
+            </div>
+            <div class="search-contact-box">
+                <span class="search-contact">联系人</span>
+            </div>
+            <ul class="ab-contact-list search-contact-list">
+                <li class="ab-contact" ng-repeat="item in searchContacts" ng-click="transferClick(item)" >
+                    <div class="avatar-box ab-user">
+                        <img src="" alt="" draggable="false" class="avatar" onerror="this.src='images/avatar40.png'" ng-src="{{item.avatarPath}}">
+                        <img src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                    </div>
+                    <span class="ab-contact-name">{{item.name}}</span>
+                </li>
+            </ul>
+            <div class="search-group-box">
+                <span class="search-group">群组</span>
+            </div>
+            <ul class="ab-contact-list  search-group-list">
+                <li class="ab-contact">
+                    <div class="avatar-box ab-user">
+                        <img src="" alt="" draggable="false" class="avatar" onerror="this.src='images/group40.png'">
+                        <img src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                    </div>
+                    <span class="ab-contact-name">tang</span>
+                </li>
+            </ul>
+        </div>
+        </div>
+        </div>
+        <div ui-view="contentView" class="content-box"></div>
+        <!-- 个人名片 -->
+        <div id="person-card" ng-show='switch.isPersionMs'>
+            <div class="avatar-box">
+                <img  ng-src="{{eachPresonDetails.avatarPath}}"  alt="" draggable="false" class="avatar">
+                <img src="images/ab-big.png" alt="" draggable="false" class="ab-logo" width="30px">
+            </div>
+            <span class="user-name">昵称: {{eachPresonDetails.name}}</span>
+            <span class="user-id">社区ID: {{eachPresonDetails.accountName}}</span>
+        </div>
+</div>

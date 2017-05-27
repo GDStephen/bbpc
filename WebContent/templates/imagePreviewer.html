@@ -1,0 +1,21 @@
+<div style="position: relative" ng-controller="ImagePreviewerController">
+    <!--工具栏-->
+    <!--<div style="background-color: greenyellow">-->
+        <!--<a href="">下载</a>-->
+        <!--<a href="">旋转</a>-->
+    <!--</div>-->
+
+    <!--图片预览区-->
+    <div style="display: flex;justify-content: center;align-items: center; ">
+            <img ng-src="{{pageContext.imageUrl}}"
+                 image-on-load="pageContext.imageLoaded(param)"
+                 image-on-error="pageContext.imageError()"
+                 alt="">
+    </div>
+
+    <div ng-show="pageContext.showLoading"
+         style="position: absolute;top: 50%;left: 50%;margin-left: -32px;margin-top: -32px">
+        <img src="imgs/img_loading.gif" style="width: 62px" alt="">
+    </div>
+
+</div>

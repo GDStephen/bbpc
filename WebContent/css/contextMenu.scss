@@ -1,0 +1,132 @@
+$zindex-dropdown: 1000 !default;
+$dropdown-bg: #fff !default;
+$dropdown-fallback-border: #ccc !default;
+$dropdown-border: rgba(0, 0, 0, .15) !default;
+$dropdown-fallback-border: #ccc !default;
+$border-radius-base: 4px !default;
+$font-size-base: 14px !default;
+$dropdown-divider-bg: #e5e5e5 !default;
+$line-height-base: 1.428571429 !default; // 20/14
+$line-height-computed: floor(($font-size-base * $line-height-base)) !default; // ~20px
+$gray-base: #000 !default;
+$gray-dark: lighten($gray-base, 20%) !default; // #333
+$dropdown-link-color: $gray-dark !default;
+$dropdown-link-hover-color: darken($gray-dark, 5%) !default;
+$dropdown-link-hover-bg: #f5f5f5 !default;
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$dropdown-link-disabled-color:   $gray-light !default;
+$cursor-disabled:                not-allowed !default;
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+
+@mixin nav-divider($color: #e5e5e5) {
+  height: 1px;
+  //margin: (($line-height-computed / 2) - 1) 0;
+  overflow: hidden;
+  background-color: $color;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow; // iOS <4.3 & Android <4.1
+  box-shadow: $shadow;
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin reset-filter() {
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+
+.clearfix {
+  @include clearfix;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: $zindex-dropdown;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0; // override default ul
+  list-style: none;
+  font-size: $font-size-base;
+  text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
+  background-color: $dropdown-bg;
+  border: 1px solid $dropdown-fallback-border; // IE8 fallback
+  border: 1px solid $dropdown-border;
+  border-radius: $border-radius-base;
+  @include box-shadow(0 6px 12px rgba(0, 0, 0, .175));
+  background-clip: padding-box;
+
+  // Aligns the dropdown menu to right
+  //
+  // Deprecated as of 3.1.0 in favor of `.dropdown-menu-[dir]`
+  &.pull-right {
+    right: 0;
+    left: auto;
+  }
+
+  // Dividers (basically an hr) within the dropdown
+  .divider {
+    @include nav-divider($dropdown-divider-bg);
+  }
+
+  // Links within the dropdown menu
+  > li > a {
+    outline: none;
+    cursor: default;
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: $line-height-base;
+    color: $dropdown-link-color;
+    white-space: nowrap; // prevent links from randomly breaking onto new lines
+  }
+}
+
+// Hover/Focus state
+.dropdown-menu > li > a {
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $dropdown-link-hover-color;
+    background-color: rgb(79,157,251);
+    //background-color: $dropdown-link-hover-bg;
+  }
+}
+
+.dropdown-menu > .disabled > a {
+  &,
+  &:hover,
+  &:focus {
+    color: #b1aeae;
+    cursor: default;
+  }
+
+  // Nuke hover/focus effects
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    background-color: transparent;
+    background-image: none; // Remove CSS gradient
+    @include reset-filter;
+
+  }
+}

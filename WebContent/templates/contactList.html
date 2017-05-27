@@ -1,0 +1,59 @@
+<div class="contact-list">
+    <div class="contact-list-box">
+        <div class="ab-number-box" hidden>
+            <span class="ab-title">安邦用户</span>
+            <span class="ab-number">3</span>
+        </div>
+        <hr class="fenge" hidden>
+        <!-- 通讯录好友列表 -->
+        <ul class="ab-contact-list" hidden>
+            <li class="ab-contact">
+                <div class="avatar-box ab-user">
+                    <img src="" alt="" draggable="false" class="avatar" onerror="this.src='images/avatar40.png'">
+                    <img src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                </div>
+                <span class="ab-contact-name">tang</span>
+            </li>
+            <li class="ab-contact">
+                <div class="avatar-box ab-user">
+                    <img src="" alt="" draggable="false" class="avatar" onerror="this.src='images/avatar40.png'">
+                    <img src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                </div>
+                <span class="ab-contact-name">tang</span>
+            </li>
+        </ul>
+        <div class="group-title">
+            <span>群组</span>
+        </div>
+        <hr class="fenge">
+        <!-- 群组列表 -->
+        <ul class="ab-contact-list" ng-controller="groupsController">
+            <li class="ab-contact" ng-class="{'active':contactId == item.jid}" ng-repeat="item in groups track by $index" ng-click="showDetails(item)">
+                    <div class="avatar-box ab-user" >
+                        <img src="" alt="" draggable="false" class="avatar" onerror="this.src='images/group40.png'" ng-src="{{item.avatarPath}}" >
+                        <img src="images/ab.png" alt="" draggable="false" class="ab-logo" ng-if="item.accountType==2" >
+                    </div>
+                    <span class="ab-contact-name">{{item.name}}</span>
+            </li>
+        </ul>
+        <div class="contact-title">
+            <span>好友</span>
+        </div>
+        <hr class="fenge letter">
+        <!-- 普通用户列表 -->
+        <ul ng-controller="friendListController">
+            <li ng-repeat="item in friendsList">
+                <span ng-if="!item.displayName" class="letter-one">{{item.name}}</span>
+                <div ng-if="item.displayName" ng-class="{'active':contactId == item.jid}" ng-click="showDetails(item)" class="ab-contact-list">
+                    <div class="ab-contact">
+                        <div class="avatar-box ab-user">
+                            <img ng-show="item.type == 'chat'" ng-src="{{item.avatarPath}}" src="images/avatar40.png" alt=""  draggable="false" class="avatar" onerror="this.src='images/avatar40.png'">
+                            <img ng-if="item.type == 'chat'&&item.accountType==2" src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                        </div>
+                        <span ng-if="item.name" class="ab-contact-name">{{item.name}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

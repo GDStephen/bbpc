@@ -1,0 +1,140 @@
+$emojiSize: 24px;
+
+.msg-box .avatar {
+  width: 34px;
+  height: 34px;
+}
+
+.message-image {
+  max-height: 100px;
+  max-height: 100px;
+
+}
+
+.message-pre {
+  .emoji {
+    width: $emojiSize;
+    height: $emojiSize;
+  }
+}
+
+.document-image-container {
+  //float: left;
+  background-color: red;
+  width: 76px;
+  height: 76px;
+}
+
+.document-info-container {
+  margin-left: 80px;
+}
+
+.mmpop {
+  position: absolute;
+  background-color: #fff;
+  z-index: 150;
+  /* top:0; */
+  left: 0;
+  outline: 0
+}
+
+.slide-top {
+  -webkit-transition: all 0 cubic-bezier(0.25, .46, .45, .94);
+  transition: all 0 cubic-bezier(0.25, .46, .45, .94)
+}
+
+.slide-top.ng-enter {
+  -webkit-transform: translateY(60px) scale(1);
+  transform: translateY(60px) scale(1);
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0
+}
+
+.slide-top.ng-enter-active {
+  -webkit-transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1);
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1
+}
+
+.slide-top.ng-leave {
+  -webkit-transform: translateY(0) scale(1);
+  transform: translateY(0) scale(1);
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms
+}
+
+.slide-top.ng-leave-active {
+  -webkit-transform: translateY(60px) scale(1);
+  transform: translateY(60px) scale(1);
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0
+}
+
+.msg-pre {
+  height: 6em;
+  overflow-y: auto;
+  overflow-x: hidden;
+  outline: 0;
+  border: 0;
+  font-size: 14px;
+  margin: 0;
+  font-family: inherit;
+
+  white-space: pre-wrap;
+  word-break: initial;
+}
+
+.tool-doc-message {
+  background: url(../images/doc.png) no-repeat;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  &:hover {
+    background: url(../images/doc-hover.png) no-repeat;
+  }
+}
+
+.message-tool-document {
+  background: url(../images/doc.png) no-repeat;
+  display: inline-block;
+}
+
+.message-file-input {
+  height: 30px;
+  width: 30px;
+  font-size: 2px;
+  right: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer;
+  position: relative;
+  top: -12px;
+  left: -6px
+}
+
+//--------------------------------------------------新增样式处理--------------------------------------------------
+.message-msg-time {
+  text-align: center;
+  padding: 5px 0;
+  span {
+    display: inline-block;
+    background-color: #dcdcdc;
+    font-size: 12px;
+    padding: 1px 18px;
+    color: #fff;
+    border-radius: 2px;
+  }
+}

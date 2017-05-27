@@ -1,0 +1,21 @@
+<!--左侧聊天列表-->
+<div class="chat-list">
+    <ul  class="chat-list-box">
+        <li ng-repeat="chatPerson in list track by $index">
+            <div class="chat-list-content" context-menu target='chatList' class="chat_item" ng-class="{'active':(chatPerson.jid == titleId)}" ng-click="chatItemClick(chatPerson)">
+                <div class="avatar-box">
+                <img  ng-show="chatPerson.type == 'chat'" class="avatar" ng-src="{{chatPerson.avatarPath}}"  src="images/avatar40.png" alt="" draggable="false" class="avatar" onerror="this.src='images/avatar40.png'">
+                <img  ng-show="chatPerson.type == 'groupchat'" src="" ng-src="{{chatPerson.avatarPath}}" src="images/group40.png" alt="" draggable="false" class="avatar" onerror="this.src='images/group40.png'">
+                <img ng-show="chatPerson.type == 'chat'&&chatPerson.accountType==2" src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                <!--<i class="icon" ng-class="{web_wechat_reddot_middle: chatPerson.count < 99, web_wechat_reddot_bbig: chatPerson.count >=99}" ng-if="chatPerson.count">{{chatPerson.count}}</i>-->
+            </div>
+            <div ng-model="chatName" class="friend-name">{{chatPerson.name}}</div>
+            <span class="last-time">{{chatPerson.msgTime}}</span>
+            <div class="chat-small">
+                <span ng-if="chatPerson.displayMessage==undefined" ng-bind-html-unsafe="chatPerson.message"></span>
+                <span ng-if="chatPerson.displayMessage!=undefined"  ng-bind-html-unsafe="chatPerson.displayMessage"></span>
+            </div>
+            </div>
+        </li>
+    </ul>
+</div>

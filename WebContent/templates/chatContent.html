@@ -1,0 +1,190 @@
+<!--聊天记录-->
+<div class="chat-content" >
+    <!--*******************最大化，最小化，关闭的三个菜单，需要移出去************************************** -->
+    <div class="menu">
+        <div class="drag" style="-webkit-app-region: drag"></div>
+        <span ng-click="sysMenuClick(0)" class="memu-close"></span>
+        <span ng-click="sysMenuClick(2)"  class="memu-max"></span>
+        <span ng-click="sysMenuClick(1)"  class="memu-min"></span>
+    </div>
+     <!--*******************头部区域：聊天对象的头像，名字************************************** -->
+    <div ng-show="hasChatPerson" class="friend-menu">
+        <div class="avatar-box chat-content-friend">
+            <img ng-src="{{talkingAvatar}}" alt="" draggable="false" class="avatar" onerror="this.src='images/avatar40.png'">
+            <img ng-if="talkingAccountType==2" src="images/ab.png" alt="" draggable="false" class="ab-logo">
+        </div>
+        <span class="chat-friend-name">{{titleName}}</span>
+        <!--<span class="addgroup"></span>-->
+    </div>
+    <net-indicator></net-indicator>
+    <!--<div class="connection-indicator">当前网络不可用，请检查你的网络设置</div>-->
+      <!--*******************聊天区域************************************** -->
+    <div class="chat-content-pancel" ng-show="hasChatPerson" ng-controller="chatLogController">
+        <div  id="wholeScroll" class="pancel-content">
+            <div class="msg-container" bbc-repeat-end="endRepeat()" ng-repeat="message in messageList" ng-switch="message.subject">
+                <p class="message-msg-time" ng-if="message.msgTime">
+                    <span >  {{message.msgTime}}</span>
+                </p>
+                <div
+                        ng-class="{'msg-box':true,'msg-get':!message.from_me,'msg-send':message.from_me}">
+                    <div class="avatar-box chat-avatar">
+                        <img ng-src="{{message.avatarPath}}"
+                             ng-click="showProfile(message.jid,'eachProfile',$event)"
+                             alt="" draggable="false" class="avatar" onerror="this.src='images/avatar34.png'">
+                        <img ng-if="message.accountType==2" src="images/ab.png" alt="" draggable="false" class="ab-logo">
+                    </div>
+                    <p  ng-switch-when="chat" class="msg-text" ng-bind-html-unsafe="message.message">
+                    </p>
+                    <p  ng-switch-when="image" class="msg-text">
+                        <img class="message-image" ng-src="data:image/img;base64,{{message.message}}" ng-click="previewPicture(message)" >
+                    </p>
+                    <p ng-switch-when="document" class="msg-text">
+                        <img src="imgs/wenjian.png" width="42px" height="42px">
+                        {{message.message}}
+                    </p>
+                    <p ng-switch-when="voice" class="msg-text">
+                        {{message.message}}
+                    </p>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+    <div class="input-box" ng-show="hasChatPerson" ng-controller="inputController">
+        <div class="tool-box">
+
+            <span class="tool-expression" ng-click="showExpressionPanel($event)"></span>
+
+            <a class="message-tool-document" href="javascript:;" >
+                <input  id="hiddenFile" onchange='angular.element(this).scope().sendFile(this.files);'
+                        title="附件"
+                        class="message-file-input"  name="myfiles" type="file">
+            </a>
+
+            <!--<span class="tool-img"></span>-->
+            <!--<span class="tool-cut"></span>-->
+        </div>
+
+        <div style="top: -316px; left: 15px;" ng-show="showEmojPanel" id="mmpop_expression_panel" class="mmpop slide-top" tabindex="-1">
+            <div class="expression">
+                <div style="position: relative;" class="scroll-wrapper exp_bd scrollbar-dynamic">
+                    <div id="exp_panel" jquery-scrollbar="" class="exp_bd scrollbar-dynamic scroll-content" ng-click="selectEmoticon($event)">
+                        <div class="exp_cont active">
+                            <div class="qq_face">
+                                <a href="javascript:;" title="{{'ONE'|translate}}" type="qq" class="face qqface0" data="[em_1]">笑</a>
+                                <a href="javascript:;" title="{{'TWO'|translate}}" type="qq" class="face qqface1" data="[em_2]">大笑</a>
+                                <a href="javascript:;" title="{{'THREE'|translate}}" type="qq" class="face qqface2" data="[em_3]">微笑</a>
+                                <a href="javascript:;" title="{{'FOUR'|translate}}" type="qq" class="face qqface3" data="[em_4]">不开心</a>
+                                <a href="javascript:;" title="{{'FIVE'|translate}}" type="qq" class="face qqface4" data="[em_5]">呆萌</a>
+                                <a href="javascript:;" title="{{'SIX'|translate}}" type="qq" class="face qqface5" data="[em_6]">花痴</a>
+                                <a href="javascript:;" title="{{'SEVEN'|translate}}" type="qq" class="face qqface6" data="[em_7]">害羞</a>
+                                <a href="javascript:;" title="{{'EIGHT'|translate}}" type="qq" class="face qqface7" data="[em_8]">闭嘴</a>
+                                <a href="javascript:;" title="{{'NINE'|translate}}" type="qq" class="face qqface8" data="[em_9]">睡着</a>
+                                <a href="javascript:;" title="{{'TEN'|translate}}" type="qq" class="face qqface9" data="[em_10]">哈欠</a>
+                                <a href="javascript:;" title="{{'ELEVEN'|translate}}" type="qq" class="face qqface10" data="[em_11]">吃惊</a>
+                                <a href="javascript:;" title="{{'TWELVE'|translate}}" type="qq" class="face qqface11" data="[em_12]">困</a>
+                                <a href="javascript:;" title="{{'THIRTEEN'|translate}}" type="qq" class="face qqface12" data="[em_13]">疯了</a>
+                                <a href="javascript:;" title="{{'FOURTEEN'|translate}}" type="qq" class="face qqface13" data="[em_14]">被批评</a>
+                                <a href="javascript:;" title="{{'FIFTEEN'|translate}}" type="qq" class="face qqface14" data="[em_15]">偷笑</a>
+                                <a href="javascript:;" title="{{'SIXTEEN'|translate}}" type="qq" class="face qqface15" data="[em_16]">无视</a>
+                                <a href="javascript:;" title="{{'SEVENTEEN'|translate}}" type="qq" class="face qqface16" data="[em_17]">尴尬</a>
+                                <a href="javascript:;" title="{{'EIGHTEEN'|translate}}" type="qq" class="face qqface17" data="[em_18]">打脸</a>
+                                <a href="javascript:;" title="{{'NINETEEN'|translate}}" type="qq" class="face qqface18" data="[em_19]">努力</a>
+                                <a href="javascript:;" title="{{'TWENTY'|translate}}" type="qq" class="face qqface19" data="[em_20]">女哭</a>
+                                <a href="javascript:;" title="{{'TWENTYONE'|translate}}" type="qq" class="face qqface20" data="[em_21]">小哭</a>
+                                <a href="javascript:;" title="{{'TWENTYTWO'|translate}}" type="qq" class="face qqface21" data="[em_22]">吃东西</a>
+                                <a href="javascript:;" title="{{'TWENTYTHREE'|translate}}" type="qq" class="face qqface22" data="[em_23]">狂笑</a>
+                                <a href="javascript:;" title="{{'TWENTYFOUR'|translate}}" type="qq" class="face qqface23" data="[em_24]">汗</a>
+                                <a href="javascript:;" title="{{'TWENTYFIVE'|translate}}" type="qq" class="face qqface24" data="[em_25]">鬼脸</a>
+                                <a href="javascript:;" title="{{'TWENTYSIIX'|translate}}" type="qq" class="face qqface25" data="[em_26]">发火</a>
+                                <a href="javascript:;" title="{{'TWENTYSEVEN'|translate}}" type="qq" class="face qqface26" data="[em_27]">小火</a>
+                                <a href="javascript:;" title="{{'TWENTYEIGHT'|translate}}" type="qq" class="face qqface27" data="[em_28]">泪流成河</a>
+                                <a href="javascript:;" title="{{'TWENTYNINE'|translate}}" type="qq" class="face qqface28" data="[em_29]">安慰</a>
+                                <a href="javascript:;" title="{{'THIRTY'|translate}}" type="qq" class="face qqface29" data="[em_30]">发呆</a>
+                                <a href="javascript:;" title="{{'THIRTYONE'|translate}}" type="qq" class="face qqface30" data="[em_31]">鄙视</a>
+                                <a href="javascript:;" title="{{'THIRTYTWO'|translate}}" type="qq" class="face qqface31" data="[em_32]">飞吻</a>
+                                <a href="javascript:;" title="{{'THIRTYTHREE'|translate}}" type="qq" class="face qqface32" data="[em_33]">喷人</a>
+                                <a href="javascript:;" title="{{'THIRTYFOUR'|translate}}" type="qq" class="face qqface33" data="[em_34]">糗大了</a>
+                                <a href="javascript:;" title="{{'THIRTYFIVE'|translate}}" type="qq" class="face qqface34" data="[em_35]">思考</a>
+                                <a href="javascript:;" title="{{'THIRTYSIX'|translate}}" type="qq" class="face qqface35" data="[em_36]">挑逗</a>
+                                <a href="javascript:;" title="{{'THIRTYSEVEN'|translate}}" type="qq" class="face qqface36" data="[em_37]">喝水</a>
+                                <a href="javascript:;" title="{{'THIRTYEIGHT'|translate}}" type="qq" class="face qqface37" data="[em_38]">花心</a>
+                                <a href="javascript:;" title="{{'THIRTYNINE'|translate}}" type="qq" class="face qqface38" data="[em_39]">惊悚</a>
+                                <a href="javascript:;" title="{{'FORTY'|translate}}" type="qq" class="face qqface39" data="[em_40]">亮牙</a>
+                                <a href="javascript:;" title="{{'FORTYONE'|translate}}" type="qq" class="face qqface40" data="[em_41]">抠鼻</a>
+                                <a href="javascript:;" title="{{'FORTYTWO'|translate}}" type="qq" class="face qqface41" data="[em_42]">呕吐</a>
+                                <a href="javascript:;" title="{{'FORTYTHREE'|translate}}" type="qq" class="face qqface42" data="[em_43]">撇嘴</a>
+                                <a href="javascript:;" title="{{'FORTYFOUR'|translate}}" type="qq" class="face qqface43" data="[em_44]">委屈</a>
+                                <a href="javascript:;" title="{{'FORTYFIVE'|translate}}" type="qq" class="face qqface44" data="[em_45]">财迷</a>
+                                <a href="javascript:;" title="{{'FORTYSIX'|translate}}" type="qq" class="face qqface45" data="[em_46]">惊吓</a>
+                                <a href="javascript:;" title="{{'FORTYSEVEN'|translate}}" type="qq" class="face qqface46" data="[em_47]">阴险</a>
+                                <a href="javascript:;" title="{{'FORTYEIGHT'|translate}}" type="qq" class="face qqface47" data="[em_48]">再见</a>
+                                <a href="javascript:;" title="{{'FORTYNINE'|translate}}" type="qq" class="face qqface48" data="[em_49]">晕</a>
+                                <a href="javascript:;" title="{{'FIFTY'|translate}}" type="qq" class="face qqface49" data="[em_50]">疑问</a>
+                                <a href="javascript:;" title="{{'FIFTYONE'|translate}}" type="qq" class="face qqface50" data="[em_51]">嘘</a>
+                                <a href="javascript:;" title="{{'FIFTYTWO'|translate}}" type="qq" class="face qqface51" data="[em_52]">烟</a>
+                                <a href="javascript:;" title="{{'FIFTYTHREE'|translate}}" type="qq" class="face qqface52" data="[em_53]">敲打</a>
+                                <a href="javascript:;" title="{{'FIFTYFOUR'|translate}}" type="qq" class="face qqface53" data="[em_54]">口罩</a>
+                                <a href="javascript:;" title="{{'FIFTYFIVE'|translate}}" type="qq" class="face qqface54" data="[em_55]">左哼哼</a>
+                                <a href="javascript:;" title="{{'FIFTYSIX'|translate}}" type="qq" class="face qqface55" data="[em_56]">右哼哼</a>
+                                <a href="javascript:;" title="{{'FIFTYSEVEN'|translate}}" type="qq" class="face qqface56" data="[em_57]">笑哭</a>
+                                <a href="javascript:;" title="{{'FIFTYEIGHT'|translate}}" type="qq" class="face qqface57" data="[em_58]">小瞧</a>
+                                <a href="javascript:;" title="{{'FIFTYNINE'|translate}}" type="qq" class="face qqface58" data="[em_59]">潜水</a>
+                                <a href="javascript:;" title="{{'SIXTY'|translate}}" type="qq" class="face qqface59" data="[em_60]">衰</a>
+                                <a href="javascript:;" title="{{'SIXTYONE'|translate}}" type="qq" class="face qqface60" data="[em_61]">倒</a>
+                                <a href="javascript:;" title="{{'SIXTYTWO'|translate}}" type="qq" class="face qqface61" data="[em_62]">勾引</a>
+                                <a href="javascript:;" title="{{'SIXTYTHREE'|translate}}" type="qq" class="face qqface62" data="[em_63]">拳头</a>
+                                <a href="javascript:;" title="{{'SIXTYFOUR'|translate}}" type="qq" class="face qqface63" data="[em_64]">握手</a>
+                                <a href="javascript:;" title="{{'SIXTYFIVE'|translate}}" type="qq" class="face qqface64" data="[em_65]">耶</a>
+                                <a href="javascript:;" title="{{'SIXTYSIX'|translate}}" type="qq" class="face qqface65" data="[em_66]">赞</a>
+                                <a href="javascript:;" title="{{'SIXTYSEVEN'|translate}}" type="qq" class="face qqface66" data="[em_67]">no</a>
+                                <a href="javascript:;" title="{{'SIXTYEIGHT'|translate}}" type="qq" class="face qqface67" data="[em_68]">ok</a>
+                                <a href="javascript:;" title="{{'SIXTYNINE'|translate}}" type="qq" class="face qqface68" data="[em_69]">抱拳</a>
+                                <a href="javascript:;" title="{{'SEVENTY'|translate}}" type="qq" class="face qqface69" data="[em_70]">鼓掌</a>
+                                <a href="javascript:;" title="{{'SEVENTYONE'|translate}}" type="qq" class="face qqface70" data="[em_71]">猪头</a>
+                                <a href="javascript:;" title="{{'SEVENTYTWO'|translate}}" type="qq" class="face qqface71" data="[em_72]">鲜花</a>
+                                <a href="javascript:;" title="{{'SEVENTYTHREE'|translate}}" type="qq" class="face qqface72" data="[em_73]">凋谢</a>
+                                <a href="javascript:;" title="{{'SEVENTYFOUR'|translate}}" type="qq" class="face qqface73" data="[em_74]">心</a>
+                                <a href="javascript:;" title="{{'SEVENTYFIVE'|translate}}" type="qq" class="face qqface74" data="[em_75]">心碎</a>
+                                <a href="javascript:;" title="{{'SEVENTYSIX'|translate}}" type="qq" class="face qqface75" data="[em_76]">蛋糕</a>
+                                <a href="javascript:;" title="{{'SEVENTYSEVEN'|translate}}" type="qq" class="face qqface76" data="[em_77]">雷</a>
+                                <a href="javascript:;" title="{{'SEVENTYEIGHT'|translate}}" type="qq" class="face qqface77" data="[em_78]">礼物</a>
+                                <a href="javascript:;" title="{{'SEVENTYNINE'|translate}}" type="qq" class="face qqface78" data="[em_79]">西瓜</a>
+                                <a href="javascript:;" title="{{'EIGHTY'|translate}}" type="qq" class="face qqface79" data="[em_80]">药</a>
+                                <a href="javascript:;" title="{{'EIGHTYONE'|translate}}" type="qq" class="face qqface80" data="[em_81]">刀</a>
+                                <a href="javascript:;" title="{{'EIGHTYTWO'|translate}}" type="qq" class="face qqface81" data="[em_82]">茶杯</a>
+                                <a href="javascript:;" title="{{'EIGHTYTHREE'|translate}}" type="qq" class="face qqface82" data="[em_83]">米饭</a>
+                                <a href="javascript:;" title="{{'EIGHTYFOUR'|translate}}" type="qq" class="face qqface83" data="[em_84]">喇叭</a>
+                                <a href="javascript:;" title="{{'EIGHTYFIVE'|translate}}" type="qq" class="face qqface84" data="[em_85]">甲虫</a>
+                                <a href="javascript:;" title="{{'EIGHTYSIX'|translate}}" type="qq" class="face qqface85" data="[em_86]">红包</a>
+                                <a href="javascript:;" title="{{'EIGHTYSEVEN'|translate}}" type="qq" class="face qqface86" data="[em_87]">粑粑</a>
+                                <a href="javascript:;" title="{{'EIGHTYEIGHT'|translate}}" type="qq" class="face qqface87" data="[em_88]">羽毛球</a>
+                                <a href="javascript:;" title="{{'EIGHTYNINE'|translate}}" type="qq" class="face qqface88" data="[em_89]">篮球</a>
+                                <a href="javascript:;" title="{{'NINETY'|translate}}" type="qq" class="face qqface89" data="[em_90]">乒乓球</a>
+                                <a href="javascript:;" title="{{'NINETYONE'|translate}}" type="qq" class="face qqface90" data="[em_91]">足球</a>
+                                <a href="javascript:;" title="{{'NINETYTWO'|translate}}" type="qq" class="face qqface91" data="[em_92]">嘴唇</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <pre id="editArea" class="input msg-pre" contenteditable="true" ng-keydown="sendKeydown($event)"></pre>
+        <span ng-click="sendMessage()" class="send-btn">发送</span>
+    </div>
+</div>
+
+
+<script>
+    $(function(){
+        $(".qq_face a").each(function (){
+            $(this).click(function(){
+                document.getElementById('editArea').focus();
+                $(this).insertAtHtml($(this).attr("data"));
+            });
+        });
+    });
+</script>
+
+
